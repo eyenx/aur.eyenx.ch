@@ -17,7 +17,7 @@ jobs:
       - run:
           name: Upload build PKG
           command: |
-            echo put export/<< parameters.aurpkg >>*pkg.tar.xz  | sftp -b- -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
+            echo put export/<< parameters.aurpkg >>*pkg.tar.xz  | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
 
 workflows:
   all-builds:
