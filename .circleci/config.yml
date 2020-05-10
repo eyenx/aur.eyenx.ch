@@ -27,9 +27,9 @@ workflows:
   all-builds:
     jobs:
       - build:
-          branches:
-            only:
-            - master
+          filters:
+            branches:
+              - master
           matrix:
             parameters:
               aurpkg:
