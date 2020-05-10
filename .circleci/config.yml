@@ -7,9 +7,6 @@ jobs:
         type: string
     docker:
       - image: docker
-    branches:
-      only:
-        - master
     steps:
       - checkout
       - setup_remote_docker
@@ -30,6 +27,9 @@ workflows:
   all-builds:
     jobs:
       - build:
+          branches:
+            only:
+            - master
           matrix:
             parameters:
               aurpkg:
