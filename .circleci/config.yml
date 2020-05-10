@@ -21,7 +21,7 @@ jobs:
       - run:
           name: scp built PKG
           command: |
-            for pkg in export/*pkg.tar.xz; do echo put $i | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}; done
+            for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}; done
 
 workflows:
   all-builds:
