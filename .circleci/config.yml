@@ -13,9 +13,13 @@ jobs:
       - run:
           name: Build PKG
           command: |
-            docker run --rm -v export:/export eyenx/aurbuilder:latest << parameters.aurpkg >> 
+            docker run --name=build_<< parameters.aurpkg >> eyenx/aurbuilder:latest << parameters.aurpkg >> 
       - run:
-          name: Upload build PKG
+          name: get built PKG
+          command: |
+            docker cp build_<< parameters.aurpkg >>:/export/ . 
+      - run:
+          name: scp built PKG
           command: |
             echo put export/<< parameters.aurpkg >>*pkg.tar.xz  | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
 
