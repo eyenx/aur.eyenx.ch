@@ -2,6 +2,9 @@ version: 2.1
 
 jobs:
   build:
+    parameters:
+      aurpkg:
+        type: string
     docker:
       - image: docker
     steps:
@@ -13,7 +16,7 @@ jobs:
       - run:
           name: Upload build PKG
           command: |
-            echo put export/<< aurpkgs.name >>*pkg.tar.xz  | sftp -b- -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
+            echo put export/<< parameters.aurpkg >>*pkg.tar.xz  | sftp -b- -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
 
 workflows:
   all-builds:
@@ -22,6 +25,6 @@ workflows:
           matrix:
             parameters:
               aurpkg:
-                - auracle-git
-                - bash-pipes
+                - "auracle-git"
+                - "bash-pipes"
 
