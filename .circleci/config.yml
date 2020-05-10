@@ -1,0 +1,25 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker
+    steps:
+      - checkout
+      - run:
+          name: Build PKG
+          command: |
+            docker run --rm -v export:/export eyenx/aurbuilder:latest << parameters.aurpkg >> 
+      - run:
+          name: Upload build PKG
+          command: |
+            echo put export/<< aurpkgs.name >>*pkg.tar.xz  | sftp -b- -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}
+workflows:
+  all-builds:
+    jobs:
+      - build:
+          matrix:
+            parameters:
+              aurpkg:
+                - auracle-git
+                - bash-pipes
+
