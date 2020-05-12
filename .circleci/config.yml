@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Build PKG
           command: |
-            docker run -e ADD_GPG_KEYS="1D1F0DC78F173680 4773BD5E130D1D45 EB774491D9FF06E2" --name=build_<< parameters.aurpkg >> eyenx/aurbuilder:latest << parameters.aurpkg >> 
+            docker run -e --name=build_<< parameters.aurpkg >> eyenx/aurbuilder:latest << parameters.aurpkg >> 
       - run:
           name: get built PKG
           command: |
