@@ -11,7 +11,7 @@ jobs:
       - checkout
       - setup_remote_docker
       - run:
-          name: Build PKG
+          name: build PKG
           command: |
             docker run --name=build_<< parameters.aurpkg >> eyenx/aurbuilder:latest << parameters.aurpkg >> 
       - run:
