@@ -74,7 +74,6 @@ workflows:
                 - "python2-j2cli"
                 - "python2-oauth2client"
                 - "python2-rsa"
-                - "python2-tzlocal"
                 - "rxvt-unicode-patched"
                 - "siji-git"
                 - "spotify"
