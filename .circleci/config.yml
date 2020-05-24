@@ -79,6 +79,7 @@ workflows:
                 - "spotify"
                 - "spotify-tui"
                 - "spotifyd-full"
+                - "sshrc"
                 - "stern-bin"
                 - "timg"
                 - "tmuxinator"
