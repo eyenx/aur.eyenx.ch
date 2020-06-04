@@ -42,7 +42,6 @@ workflows:
                 - "connect"
                 - "debtap"
                 - "drone-cli"
-                - "gkeyring"
                 - "grepcidr"
                 - "gtk-recordmydesktop"
                 - "gnunet-gtk"
