@@ -7,6 +7,26 @@ on:
 jobs:
   aurpkg-build:
     runs-on: ubuntu-latest
+    steps:
+    - name:  prepare environment
+      run: |
+        mkdir $HOME/.ssh && echo $SSH_KEY | base64 -d  > $HOME/.ssh/id_rsa && chmod 0700 $HOME/.ssh && chmod 0600 $HOME/.ssh/id_rsa
+      env:
+        SSH_KEY: ${{ secrets.SSH_KEY }}
+    - name:  build ${{ matrix.aurpkg }}
+      run: |
+        docker run --name=build_${{ matrix.aurpkg }} eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
+    - name:  cp pkg out of container
+      run: |
+        docker cp build_${{ matrix.aurpkg }}:/export/ .
+    - name:  copy pkg via sftp
+      run: |
+        for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR} &>/dev/null; done
+      env:
+        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+        SFTP_PORT: ${{ secrets.SFTP_PORT }}
+        SFTP_USER: ${{ secrets.SFTP_USER }}
+        SFTP_DIR: ${{ secrets.SFTP_DIR }}
     strategy:
         fail-fast: false
         matrix:
@@ -73,23 +93,3 @@ jobs:
               - "wpa_actiond"
               - "yay"
               - "zoom"
-    steps:
-    - name:  prepare environment
-      run: |
-        mkdir $HOME/.ssh && echo $SSH_KEY | base64 -d  > $HOME/.ssh/id_rsa && chmod 0700 $HOME/.ssh && chmod 0600 $HOME/.ssh/id_rsa
-      env:
-        SSH_KEY: ${{ secrets.SSH_KEY }}
-    - name:  build ${{ matrix.aurpkg }}
-      run: |
-        docker run --name=build_${{ matrix.aurpkg }} eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
-    - name:  cp pkg out of container
-      run: |
-        docker cp build_${{ matrix.aurpkg }}:/export/ .
-    - name:  copy pkg via sftp
-      run: |
-        for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}; done
-      env:
-        SFTP_HOST: ${{ secrets.SFTP_HOST }}
-        SFTP_PORT: ${{ secrets.SFTP_PORT }}
-        SFTP_USER: ${{ secrets.SFTP_USER }}
-        SFTP_DIR: ${{ secrets.SFTP_DIR }}
