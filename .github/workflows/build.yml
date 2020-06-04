@@ -77,11 +77,11 @@ jobs:
     - uses: actions/checkout@v1
     - name:  build all
       run: |
-        docker run --name=build_{{ matrix.aurpkg }} eyenx/aurbuilder:latest {{ matrix.aurpkg }}
+        docker run --name=build_${{ matrix.aurpkg }} eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
     - run: |
-        docker cp build_{{ matrix.aurpkg }}
+        docker cp build_${{ matrix.aurpkg }}
     - run: |
-        docker cp b ild_{{ matrix.aurpkg }}
+        docker cp b ild_${{ matrix.aurpkg }}
     - run: |
         for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}; done
 
