@@ -13,7 +13,7 @@ jobs:
       - run:
           name: clean environment
           command: |
-            docker system prune --volumes
+            docker system prune --volumes -f
       - run:
           name: build PKG
           command: |
