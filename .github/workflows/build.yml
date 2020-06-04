@@ -74,16 +74,15 @@ jobs:
               - "yay"
               - "zoom"
     steps:
-    - uses: actions/checkout@v1
+    - name:  prepare environment
+      run: |
+        mkdir $HOME/.ssh && echo $SSH_KEY | base64 -d  > $HOME/.ssh/id_rsa && chmod 0700 .ssh && chmod 0600 .ssh/id_rsa
     - name:  build ${{ matrix.aurpkg }}
       run: |
         docker run --name=build_${{ matrix.aurpkg }} eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
     - name:  cp pkg out of container
       run: |
         docker cp build_${{ matrix.aurpkg }}:/export/ .
-    - name:  prepare environment
-      run: |
-        mkdir $HOME/.ssh && echo $SSH_KEY | base64 -d  > $HOME/.ssh/id_rsa && chmod 0700 .ssh && chmod 0600 .ssh/id_rsa
     - name:  copy pkg via sftp
       run: |
         for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR}; done
