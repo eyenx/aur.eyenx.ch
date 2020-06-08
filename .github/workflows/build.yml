@@ -1,4 +1,4 @@
-name: "build-aurpkgs"
+name: "build"
 on: 
   schedule:
     - cron: '3 22 * * *'
