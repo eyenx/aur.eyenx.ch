@@ -45,6 +45,7 @@ jobs:
               - "drone-cli"
               - "grepcidr"
               - "gtk-recordmydesktop"
+              - "gomplate-git"
               - "gnunet-gtk"
               - "helm-docs"
               - "icaclient"
