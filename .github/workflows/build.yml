@@ -43,6 +43,7 @@ jobs:
               - "debtap"
               - "dockfmt"
               - "drone-cli"
+              - "google-cloud-sdk"
               - "grepcidr"
               - "gtk-recordmydesktop"
               - "gomplate-git"
