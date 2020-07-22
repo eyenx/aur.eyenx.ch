@@ -83,6 +83,7 @@ jobs:
               - "rxvt-unicode-patched"
               - "siji-git"
               - "spotify"
+              - "ssb-server"
               - "sshrc"
               - "sslyze"
               - "stern-bin"
