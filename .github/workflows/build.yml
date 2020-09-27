@@ -23,7 +23,7 @@ jobs:
         docker cp build_${{ matrix.aurpkg }}:/export/ .
     - name:  copy pkg via sftp
       run: |
-        for pkg in export/*pkg.tar.xz; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR} &>/dev/null; done
+        for pkg in export/*.pkg.tar.*; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR} &>/dev/null; done
       env:
         SFTP_HOST: ${{ secrets.SFTP_HOST }}
         SFTP_PORT: ${{ secrets.SFTP_PORT }}
