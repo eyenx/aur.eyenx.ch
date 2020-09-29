@@ -72,7 +72,7 @@ jobs:
               - "nodejs-commitizen"
               - "nodejs-cz-conventional-changelog"
               - "nodejs-cz-emoji"
-              - "nodejs-cz-gitemoji"
+              - "nodejs-cz-gitmoji"
               - "nodejs-dat"
               - "nodejs-jsondiffpatch"
               - "notifymuch-git"
