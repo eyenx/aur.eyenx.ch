@@ -37,6 +37,7 @@ jobs:
               - "azure-cli"
               - "bash-pipes"
               - "beautysh"
+              - "brig"
               - "circleci-cli-bin"
               - "cloudfoundry-cli"
               - "conky-cli"
