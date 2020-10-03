@@ -80,6 +80,7 @@ jobs:
               - "phantomjs-bin"
               - "polaris-bin"
               - "pypy3-httplib2"
+              - "python-cssutils"
               - "python-notify2"
               - "python-openshift"
               - "python2-gnomekeyring"
