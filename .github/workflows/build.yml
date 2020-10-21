@@ -108,6 +108,7 @@ jobs:
               - "twmn-git"
               - "vault-client"
               - "velero-bin"
+              - "waypoint-bin"
               - "websockify"
               - "whalebrew"
               - "wpa_actiond"
