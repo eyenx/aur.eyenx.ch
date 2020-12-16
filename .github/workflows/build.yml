@@ -38,7 +38,6 @@ jobs:
               - "bash-pipes"
               - "beautysh"
               - "brig"
-              - "bpytop"
               - "circleci-cli-bin"
               - "cloudfoundry-cli"
               - "conky-cli"
