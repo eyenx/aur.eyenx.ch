@@ -89,7 +89,6 @@ jobs:
               - "phetch"
               - "polaris-bin"
               - "pypy3-httplib2"
-              - "python-cssutils"
               - "python-openshift"
               - "python2-gnomekeyring"
               - "python2-j2cli"
