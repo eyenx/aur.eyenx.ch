@@ -1,0 +1,29 @@
+name: "build"
+on: 
+  push:
+
+jobs:
+  aurpkg-build:
+    runs-on: ubuntu-latest
+    steps:
+
+    - name:  build ${{ matrix.aurpkg }}
+      run: |
+        docker run -e ADD_GPG_KEYS="4773BD5E130D1D45 1D1F0DC78F173680 EB774491D9FF06E2" --name=build_${{ matrix.aurpkg }} ghcr.io/eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
+
+    - name:  cp pkg out of container
+      run: |
+        docker cp build_${{ matrix.aurpkg }}:/export/ .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.aurpkg }} 
+        path: export/${{ matrix.aurpkg }}.pkg.tar.*
+
+    strategy:
+        fail-fast: false
+        matrix:
+            aurpkg:
+              - "auracle-git"
+              - "bash-pipes"
+              - "beautysh"
