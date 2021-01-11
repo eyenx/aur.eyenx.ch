@@ -21,6 +21,12 @@ jobs:
     - name:  cp pkg out of container
       run: |
         docker cp build_${{ matrix.aurpkg }}:/export/ .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.aurpkg }} 
+        path: export/${{ matrix.aurpkg }}.pkg.tar.*
+
     - name:  copy pkg via sftp
       run: |
         for pkg in export/*.pkg.tar.*; do echo put $pkg | sftp -b- -o "StrictHostKeyChecking=no" -P ${SFTP_PORT} ${SFTP_USER}@${SFTP_HOST}:${SFTP_DIR} &>/dev/null; done
@@ -29,6 +35,7 @@ jobs:
         SFTP_PORT: ${{ secrets.SFTP_PORT }}
         SFTP_USER: ${{ secrets.SFTP_USER }}
         SFTP_DIR: ${{ secrets.SFTP_DIR }}
+
     strategy:
         fail-fast: false
         matrix:
