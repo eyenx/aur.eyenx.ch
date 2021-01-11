@@ -17,8 +17,8 @@ jobs:
 
     - uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.aurpkg }} 
-        path: export/${{ matrix.aurpkg }}*.pkg.tar.*
+        name: packages
+        path: export/*.pkg.tar.*
 
     strategy:
         fail-fast: false
