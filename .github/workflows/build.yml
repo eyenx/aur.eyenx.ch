@@ -17,7 +17,7 @@ jobs:
         SSH_KEY: ${{ secrets.SSH_KEY }}
     - name:  build ${{ matrix.aurpkg }}
       run: |
-        docker run -e ADD_GPG_KEYS="4773BD5E130D1D45 1D1F0DC78F173680 EB774491D9FF06E2" --name=build_${{ matrix.aurpkg }} ghcr.io/eyenx/aurbuilder:latest ${{ matrix.aurpkg }}
+        docker run -e ADD_GPG_KEYS="4773BD5E130D1D45 1D1F0DC78F173680 EB774491D9FF06E2" --name=build_${{ matrix.aurpkg }} ghcr.io/eyenx/aurbuilder:v0.1.0 ${{ matrix.aurpkg }}
     - name:  cp pkg out of container
       run: |
         docker cp build_${{ matrix.aurpkg }}:/export/ .
@@ -70,6 +70,7 @@ jobs:
               - "ix"
               - "jitsi"
               - "joplin"
+              - "joplin-desktop"
               - "jsonnet-bundler-bin"
               - "jsonnet"
               - "keybase-bin"
