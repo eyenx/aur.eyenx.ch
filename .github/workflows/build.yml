@@ -85,6 +85,8 @@ jobs:
               - "mpris-scrobbler"
               - "ncpamixer"
               - "ncspot"
+              - "nerdctl-bin"
+              - "nerdctl-git"
               - "nix"
               - "nodejs-commitizen"
               - "nodejs-cz-conventional-changelog"
