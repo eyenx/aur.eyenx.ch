@@ -1,7 +1,7 @@
 name: "build"
 on: 
   schedule:
-    - cron: '3 12 * * *'
+    - cron: '3 2 * * *'
   push:
     branches:
     - 'master'
