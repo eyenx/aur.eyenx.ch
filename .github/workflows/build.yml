@@ -49,6 +49,7 @@ jobs:
               - "cloudfoundry-cli"
               - "conky-cli"
               - "connect"
+              - "ctlptl-bin"
               - "debtap"
               - "dockfmt"
               - "drone-cli"
