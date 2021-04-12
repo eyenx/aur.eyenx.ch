@@ -72,6 +72,8 @@ jobs:
               - "joplin-desktop"
               - "jsonnet-bundler-bin"
               - "jsonnet"
+              - "k0s-bin"
+              - "k0sctl-bin"
               - "keybase-bin"
               - "keys-pub"
               - "kubectl-bin"
