@@ -65,7 +65,6 @@ jobs:
               - "gtk-recordmydesktop"
               - "grpcurl-bin"
               - "helm-docs"
-              - "hub-bin"
               - "icaclient"
               - "insomnia"
               - "ipfs-paste"
