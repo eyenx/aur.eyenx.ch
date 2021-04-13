@@ -58,7 +58,7 @@ jobs:
               - "finja"
               - "gnome-shell-extension-taskwhisperer"
               - "gofumpt-git"
-              - "golangci-git"
+              - "golangci-lint"
               - "gomplate-git"
               - "google-cloud-sdk"
               - "grepcidr"
