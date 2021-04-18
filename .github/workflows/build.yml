@@ -111,6 +111,7 @@ jobs:
               - "rancher-k3d-bin"
               - "rke-bin"
               - "siji-git"
+              - "ssb-patchwork"
               - "ssb-server"
               - "sshrc"
               - "sslyze"
