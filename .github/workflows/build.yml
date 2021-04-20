@@ -79,7 +79,7 @@ jobs:
               - "k0sctl-bin"
               - "keybase-bin"
               - "keys-pub"
-              - "kubectl-bin"
+              - "kubepub-bin"
               - "kubeval-bin"
               - "kustomize-bin"
               - "lbdb"
