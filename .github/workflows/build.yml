@@ -110,6 +110,7 @@ jobs:
               - "python2-rsa"
               - "rancher-k3d-bin"
               - "rke-bin"
+              - "rootlesskit"
               - "siji-git"
               - "ssb-patchwork"
               - "ssb-server"
