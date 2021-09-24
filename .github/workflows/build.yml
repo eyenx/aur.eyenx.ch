@@ -82,6 +82,7 @@ jobs:
               - "keys-pub"
               - "kubepub-bin"
               - "kubeval-bin"
+              - "kubeswitch-bin"
               - "kustomize-bin"
               - "lbdb"
               - "mimeo"
