@@ -55,7 +55,6 @@ jobs:
               - "dockfmt"
               - "epson-inkjet-printer-escpr"
               - "finja"
-              - "gitlab-glab-bin"
               - "gnome-shell-extension-taskwhisperer"
               - "gofumpt-git"
               - "golangci-lint"
